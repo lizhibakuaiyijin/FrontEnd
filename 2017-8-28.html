@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>8月28号面试题</title>
+	<link rel="stylesheet" type="text/css" href="CSS/markdown.css">
+</head>
+<body>
+	<div class="markdown-body">
+		<h1 id="toc_0">8月28号面试题</h1>
+		<h2 id="toc_1">第一题 请写出下面代码执行结果</h2>
+		<pre><code>var length = 10;
+function fn() {
+    console.log(this.length);           
+}
+var obj = {
+    length: 5,
+    method: function (fn) {
+        fn();
+        console.log(arguments[0]);
+        arguments[0]();
+    }
+};
+obj.method(fn,1);</code></pre>
+		<h2 id="toc_2">第二题 请写出下面代码执行结果</h2>
+		<pre><code>var length = 10;
+function fn() {
+  console.log(this.length);
+}
+var obj = {
+  length: 5,
+  method: function(fn) {
+      fn();
+      const fun = arguments[0];
+      fun();
+
+  }
+};
+obj.method(fn,1);</code></pre>
+		<h2 id="toc_3">第三题 请写出下面代码执行结果</h2>
+		<pre><code>function fn(a) {
+  console.log(a);
+  var a = 2;
+  function a() {}
+  console.log(a);
+}
+fn(1);</code></pre>
+		<h2 id="toc_4">第四题 请写出下面代码执行结果</h2>
+		<pre><code>var f = true;
+if (f === true) {
+  var a = 10;
+}
+function fn() {
+  var b = 20;
+  c = 30;
+}
+fn();
+console.log(a);
+console.log(b);
+console.log(c);
+</code></pre>
+		<h2 id="toc_5">第五题 请写出下面代码执行结果</h2>
+		<pre><code>for(a in &#39;window&#39;) {
+  var a = 10;
+} 
+console.log(a);
+</code></pre>
+		<h2 id="toc_6">第六题 请写出下面代码执行结果</h2>
+		<pre><code>var a = 10;
+a.pro = 10;
+console.log(a.pro + a);
+
+var s = &quot;hello&quot;;
+s.pro = &quot;world&quot;;
+console.log(s + s.pro);
+</code></pre>
+		<h2 id="toc_7">第七题 请写出下面代码执行结果</h2>
+		<pre><code>console.log(typeof fn);
+var fn = 10;
+function fn() {}
+</code></pre>
+		<h2 id="toc_8">第八题 请写出下面代码执行结果</h2>
+		<pre><code>var baz=3;
+var bazz={
+  baz: 2,
+  getbaz: function() {
+       return this.baz
+  }
+}
+console.log(bazz.getbaz());
+var g=bazz.getbaz; 
+console.log(g());
+</code></pre>
+		<h2 id="toc_9">第九题</h2>
+		<p>判断一个字符串中出现次数最多的字符，并统计次数，例如</p>
+		<pre><code>var s = &#39;aaabbccccccccaaabbbaaab&#39;;</code></pre>
+		<h2 id="toc_10">第十题</h2>
+		<p>请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象，如：</p>
+		<pre><code>var url = "https://lizhibakuaiyijin.com/index.php?key0=0&amp;key1=1&amp;key2=2"</code></pre>
+		<br><br><br><br>
+	</div>
+</body>
+</html>
