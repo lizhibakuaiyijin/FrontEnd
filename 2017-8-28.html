@@ -1,11 +1,97 @@
+<!-- author：lizhibakuaiyijin -->
 <!DOCTYPE html>
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
 	<title>8月28号面试题</title>
 	<link rel="stylesheet" type="text/css" href="CSS/markdown.css">
+	<style>
+		body{
+			background-color: gray;
+		}
+		div.button{
+			display: inline-block;
+			width: 7em;
+		}
+		.button{
+			margin-left: 28px;
+			padding: .4em;
+			height: 1.5em;
+			line-height: 1.5em;
+			background-color: #d9534f;
+			border: 1px solid #d43f3a;
+			border-radius: .4em;
+			font-size: 1.5em;
+			text-align: center;
+			color: #fff;
+			cursor: pointer;
+		}
+		.button:hover{
+			background-color: #c9302c;
+    		border-color: #ac2925;
+		}
+		div.hidden{
+			display: none;
+			width: 80%;
+			margin-top: 5px;
+			margin-left: 70px;
+			padding: .4em;
+			background-color: #e6e8eb;
+			border-radius: .4em;
+			line-height: 2em;
+			font-size: 1.2em;
+		}
+		/*答案*/
+		.hidden pre{
+			background-color: #e6e8eb;
+			border: none;
+			font-size: 1em;
+		}
+		/*高亮提示*/
+		.yellow{
+			background-color: #fff9c4;
+			border: 1px solid #FFF182;
+			border-radius: .3em;
+		}
+		.error{
+			color: red;
+		}
+		body>header{
+			position: fixed;
+			padding: .5em 0;
+			width: 100px;
+			top: 20%;
+			right: 20px;
+			background-color: #5bc0de;
+			border: 1px solid #46b8da;
+			border-radius: .4em;
+		}
+		header:hover{
+			background-color: #31b0d5;
+			border-color: #269abc;
+		}
+		ul{
+			margin-left: 0;
+			text-align: center;
+		}
+		li{
+			padding: .2em 0;
+			margin-bottom: .5em;
+			list-style-type: none;
+			font-size: 1.5em;
+			color: #009688;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
+	<header>
+		<ul>
+			<li>白天模式</li>
+			<li>黑夜模式</li>
+			<li>护眼模式</li>
+		</ul>
+	</header>
 	<div class="markdown-body">
 		<h1 id="toc_0">8月28号面试题</h1>
 		<h2 id="toc_1">第一题 请写出下面代码执行结果</h2>
@@ -17,11 +103,16 @@ var obj = {
     length: 5,
     method: function (fn) {
         fn();
-        console.log(arguments[0]);
         arguments[0]();
     }
 };
 obj.method(fn,1);</code></pre>
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<span><code>打印结果：第一次打印输出：10，第二次打印输出：2</code></span>
+			<br/><br/>
+			<span><code>解析：<span class="yellow">考察 this 指向</span>。第一次调用fn()，this指向Window，故第一次打印为10。第二次调用参数列表的第一个参数，即fn，但此时this指向arguments，我们传了2个参数，arguments.length = 2，故第二次打印为2。</code></span>
+		</div>
 		<h2 id="toc_2">第二题 请写出下面代码执行结果</h2>
 		<pre><code>var length = 10;
 function fn() {
@@ -37,6 +128,12 @@ var obj = {
   }
 };
 obj.method(fn,1);</code></pre>
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<span><code>打印结果：第一次打印输出：10，第二次打印输出：10</code></span>
+			<br/><br/>
+			<span><code>解析：<span class="yellow">考察 this 指向</span>，<span class="yellow">const</span>。const声明一个只读的常量，一旦声明，常量的值就不能改变。const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。所以调用fun()的时候，this还是指向Window,故第二次打印结果同为10。</code></span>
+		</div>
 		<h2 id="toc_3">第三题 请写出下面代码执行结果</h2>
 		<pre><code>function fn(a) {
   console.log(a);
@@ -45,6 +142,12 @@ obj.method(fn,1);</code></pre>
   console.log(a);
 }
 fn(1);</code></pre>
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<span><code>打印结果：第一次打印输出：ƒ a() {}，第二次打印输出：2</code></span>
+			<br/><br/>
+			<span><code>解析：<span class="yellow">考察 var 和函数的提前声明</span>。同一个名称标识a，即有变量声明var a，又有函数声明function a() {}，不管二者声明的顺序，函数声明会覆盖变量声明，所以第一次打印输出的就是 ƒ a() {}，如果在变量声明的同时初始化a，或是之后对a进行赋值，此时a的值为变量的值，故第二次打印输出2。</code></span>
+		</div>
 		<h2 id="toc_4">第四题 请写出下面代码执行结果</h2>
 		<pre><code>var f = true;
 if (f === true) {
@@ -59,12 +162,24 @@ console.log(a);
 console.log(b);
 console.log(c);
 </code></pre>
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<span><code>打印结果：第一次打印输出：10，第二次打印输出：报错  <span class="error"> Uncaught ReferenceError: b is not defined</span></code></span>
+			<br/><br/>
+			<span><code>解析：<span class="yellow">考察变量作用域</span>。打印b报错的原因：b是在函数内声明的局部变量，在函数外使用b的时候，会报错，提示b未定义。JavaScript是单线程的，当程序报错的时候，不会再往下执行，故不会打印c的值。（若打印c，输出：30，因为c是定义在函数内部的全局变量）。</code></span>
+		</div>
 		<h2 id="toc_5">第五题 请写出下面代码执行结果</h2>
 		<pre><code>for(a in &#39;window&#39;) {
   var a = 10;
 } 
 console.log(a);
 </code></pre>
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<span><code>打印结果：10</code></span>
+			<br/><br/>
+			<span><code>解析：funciton和var会提前声明,而其实{...}内的变量也会提前声明，于是代码还没执行前a已经被声明了。所以 ‘a’ in window会返回true,a被赋值。</code></span>
+		</div>
 		<h2 id="toc_6">第六题 请写出下面代码执行结果</h2>
 		<pre><code>var a = 10;
 a.pro = 10;
@@ -74,11 +189,23 @@ var s = &quot;hello&quot;;
 s.pro = &quot;world&quot;;
 console.log(s + s.pro);
 </code></pre>
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<span><code>打印结果：第一次打印输出：NAN，第二次打印输出：helloundefined  </code></span>
+			<br/><br/>
+			<span><code>解析：<span class="yellow">给基本类型数据添加属性，不报错，但取值时是undefined</span>。10+undefined返回NaN,而undefined和string相加时转变成了字符串。</code></span>
+		</div>
 		<h2 id="toc_7">第七题 请写出下面代码执行结果</h2>
 		<pre><code>console.log(typeof fn);
 var fn = 10;
 function fn() {}
-</code></pre>
+</code></pre>	
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<span><code>打印结果：function</code></span>
+			<br/><br/>
+			<span>解析：同第三题。</span>
+		</div>
 		<h2 id="toc_8">第八题 请写出下面代码执行结果</h2>
 		<pre><code>var baz=3;
 var bazz={
@@ -91,13 +218,98 @@ console.log(bazz.getbaz());
 var g=bazz.getbaz; 
 console.log(g());
 </code></pre>
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<span><code>打印结果：第一次打印输出：2，第二次打印输出：3</code></span>
+			<br/><br/>
+			<span><code>解析：<span class="yellow">考察 this 指向</span>。</code></span>
+		</div>
 		<h2 id="toc_9">第九题</h2>
 		<p>判断一个字符串中出现次数最多的字符，并统计次数，例如</p>
 		<pre><code>var s = &#39;aaabbccccccccaaabbbaaab&#39;;</code></pre>
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<pre><code>// 方法一
+var obj = {};
+var letter;
+var maxn = -1; // 记录出现次数最多的元素 （标记）
+for (let i = 0; i < s.length; i++) {
+	if (obj[s[i]]) {
+		obj[s[i]] ++;
+		//  判断当前字母是否成为出现次数最多的，若是，更新maxn
+		if (obj[s[i]] > maxn) {
+			maxn = obj[s[i]];
+			letter = s[i];
+		}
+	} else {
+		obj[s[i]] = 1;
+		if (obj[s[i]] > maxn) {
+			maxn = obj[s[i]];
+			letter = s[i]; // a
+		}
+	}
+}
+console.log(`${letter}:${maxn}`);
+
+//方法二（正则）
+var a = s.split("");
+a.sort();
+s = a.join("");
+var pattern = /(\w)\1*/g;
+var ans = s.match(pattern);
+ans.sort(function (a, b) {
+	return a.length < b.length;			
+}); 
+console.log(ans[0][0] + ":" + ans[0].length);</code></pre>
+		</div>
 		<h2 id="toc_10">第十题</h2>
 		<p>请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象，如：</p>
-		<pre><code>var url = "https://lizhibakuaiyijin.com/index.php?key0=0&amp;key1=1&amp;key2=2"</code></pre>
+		<pre><code>var url = 'http://lizhibakuaiyijin.com/index.php?key0=david&key1=lily&key2=sum';
+</code></pre>
+		<div class="button" onclick="showHint(this)">点击查看答案</div>
+		<div class="hidden">
+			<pre><code>function parseQueryString(url) {
+var obj = {};
+var a = url.split("?");
+console.log(a);
+if (a.length === 1 || a[1] === "") return obj;
+var b = a[1].split("&");
+for (var i = 0; i < b.length; i++) {
+ 	var c = b[i].split("=");
+ 	obj[c[0]] = c[1];
+}
+return obj;
+}
+var url = 'http://lizhibakuaiyijin.com/index.php?key0=david&key1=lily&key2=sum';
+var obj = parseQueryString(url);</code></pre>
+		</div>
 		<br><br><br><br>
 	</div>
 </body>
+<script type="text/javascript">
+	function showHint(t) {
+		var style = window.getComputedStyle(t.nextSibling.nextSibling);
+		if (style.display === "none") {
+			t.nextSibling.nextSibling.style.display = "block";
+			t.innerHTML = "点击关闭答案";
+		} else {
+			t.nextSibling.nextSibling.style.display = "none";
+			t.innerHTML = "点击显示答案";
+		}
+	}
+
+	lis = document.getElementsByTagName('li');
+	bkArr = ["#fff","gray","#fffde7"];
+	lastIndex = lis[0];
+	for (var i = 0; i < lis.length; i++) {
+		(function (i) {
+			lis[i].onclick = function () {
+				lastIndex.style.color = "#009688";
+				lastIndex = this;
+				document.body.style.backgroundColor = bkArr[i];
+				this.style.color = "#fff";
+			}
+		})(i);
+	}
+</script>
 </html>
