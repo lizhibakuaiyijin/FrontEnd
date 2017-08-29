@@ -5,83 +5,8 @@
 	<meta charset="UTF-8">
 	<title>8月28号面试题</title>
 	<link rel="stylesheet" type="text/css" href="CSS/markdown.css">
+	<link rel="stylesheet" type="text/css" href="CSS/normal.css">
 	<style>
-		body{
-			background-color: gray;
-		}
-		div.button{
-			display: inline-block;
-			width: 7em;
-		}
-		.button{
-			margin-left: 28px;
-			padding: .4em;
-			height: 1.5em;
-			line-height: 1.5em;
-			background-color: #d9534f;
-			border: 1px solid #d43f3a;
-			border-radius: .4em;
-			font-size: 1.5em;
-			text-align: center;
-			color: #fff;
-			cursor: pointer;
-		}
-		.button:hover{
-			background-color: #c9302c;
-    		border-color: #ac2925;
-		}
-		div.hidden{
-			display: none;
-			width: 80%;
-			margin-top: 5px;
-			margin-left: 70px;
-			padding: .4em;
-			background-color: #e6e8eb;
-			border-radius: .4em;
-			line-height: 2em;
-			font-size: 1.2em;
-		}
-		/*答案*/
-		.hidden pre{
-			background-color: #e6e8eb;
-			border: none;
-			font-size: 1em;
-		}
-		/*高亮提示*/
-		.yellow{
-			background-color: #fff9c4;
-			border: 1px solid #FFF182;
-			border-radius: .3em;
-		}
-		.error{
-			color: red;
-		}
-		body>header{
-			position: fixed;
-			padding: .5em 0;
-			width: 100px;
-			top: 20%;
-			right: 20px;
-			background-color: #5bc0de;
-			border: 1px solid #46b8da;
-			border-radius: .4em;
-		}
-		header:hover{
-			background-color: #31b0d5;
-			border-color: #269abc;
-		}
-		ul{
-			margin-left: 0;
-			text-align: center;
-		}
-		li{
-			padding: .2em 0;
-			margin-bottom: .5em;
-			list-style-type: none;
-			font-size: 1.5em;
-			color: #009688;
-			cursor: pointer;
-		}
 	</style>
 </head>
 <body>
@@ -286,30 +211,5 @@ var obj = parseQueryString(url);</code></pre>
 		<br><br><br><br>
 	</div>
 </body>
-<script type="text/javascript">
-	function showHint(t) {
-		var style = window.getComputedStyle(t.nextSibling.nextSibling);
-		if (style.display === "none") {
-			t.nextSibling.nextSibling.style.display = "block";
-			t.innerHTML = "点击关闭答案";
-		} else {
-			t.nextSibling.nextSibling.style.display = "none";
-			t.innerHTML = "点击显示答案";
-		}
-	}
-
-	lis = document.getElementsByTagName('li');
-	bkArr = ["#fff","gray","#fffde7"];
-	lastIndex = lis[0];
-	for (var i = 0; i < lis.length; i++) {
-		(function (i) {
-			lis[i].onclick = function () {
-				lastIndex.style.color = "#009688";
-				lastIndex = this;
-				document.body.style.backgroundColor = bkArr[i];
-				this.style.color = "#fff";
-			}
-		})(i);
-	}
-</script>
+<script type="text/javascript" src="JS/normal.js"></script>
 </html>

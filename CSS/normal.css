@@ -1,0 +1,79 @@
+body{
+	background-color: gray;
+}
+div.button{
+	display: inline-block;
+	width: 7em;
+}
+.button{
+	margin-left: 28px;
+	padding: .4em;
+	height: 1.5em;
+	line-height: 1.5em;
+	background-color: #d9534f;
+	border: 1px solid #d43f3a;
+	border-radius: .4em;
+	font-size: 1.5em;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+}
+.button:hover{
+	background-color: #c9302c;
+	border-color: #ac2925;
+}
+div.hidden{
+	display: none;
+	width: 80%;
+	margin-top: 5px;
+	margin-left: 70px;
+	padding: .4em;
+	background-color: #e6e8eb;
+	border-radius: .4em;
+	line-height: 2em;
+	font-size: 1.2em;
+}
+/*答案*/
+.hidden pre{
+	background-color: #e6e8eb;
+	border: none;
+	font-size: 1em;
+}
+/*高亮提示*/
+.yellow{
+	background-color: #fff9c4;
+	border: 1px solid #FFF182;
+	border-radius: .3em;
+}
+.error{
+	color: red;
+}
+body>header{
+	position: fixed;
+	padding: .5em 0;
+	width: 100px;
+	top: 20%;
+	right: 20px;
+	background-color: #5bc0de;
+	border: 1px solid #46b8da;
+	border-radius: .4em;
+}
+header:hover{
+	background-color: #31b0d5;
+	border-color: #269abc;
+}
+ul{
+	margin-left: 0;
+	text-align: center;
+}
+li{
+	padding: .2em 0;
+	margin-bottom: .5em;
+	list-style-type: none;
+	font-size: 1.5em;
+	color: #009688;
+	cursor: pointer;
+}
+p{
+	font-size: 1.2em;
+}
