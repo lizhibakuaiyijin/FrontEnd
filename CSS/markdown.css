@@ -22,7 +22,7 @@ body{line-height:1.5em;color:#222;-webkit-text-size-adjust:none;  min-width: 200
 pre,code,tt,p code,li code{font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace}
 h1{font-size:2.2em;line-height:1.2em}
 h1,h2,h3,h4,h5,h6{text-rendering:optimizelegibility;margin-bottom:1em;font-weight:bold}
-h2,section h1{font-size:1.5em}
+h2,section h1{font-size:1.5em;line-height: 1.5em;}
 h3,section h2,section section h1{font-size:1.3em}
 h4,section h3,section section h2,section section section h1{font-size:1em}
 h5,section h4,section section h3{font-size:.9em}
