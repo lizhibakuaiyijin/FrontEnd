@@ -94,7 +94,7 @@ console.log(c);
 			<span><code>解析：<span class="yellow">考察变量作用域</span>。打印b报错的原因：b是在函数内声明的局部变量，在函数外使用b的时候，会报错，提示b未定义。JavaScript是单线程的，当程序报错的时候，不会再往下执行，故不会打印c的值。（若打印c，输出：30，因为c是定义在函数内部的全局变量）。</code></span>
 		</div>
 		<h2 id="toc_5">第五题 请写出下面代码执行结果</h2>
-		<pre><code>for(a in &#39;window&#39;) {
+		<pre><code>if(a in &#39;window&#39;) {
   var a = 10;
 } 
 console.log(a);
