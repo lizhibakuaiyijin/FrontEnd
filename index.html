@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+			color: #333;
+		}
+		html{
+			height: 100%;
+		}
+		body{
+			height: 100%;
+			background: url("img/bk.jpg") center bottom no-repeat;
+			background-size: cover;
+		}
+		.wrap{
+			height: 100%;
+			width: 100%;
+			position: relative;
+		}
+		header{
+			min-height: 50px;
+			position: fixed;
+			width: 100%;
+			background-color: #333;
+		}
+		.controls{
+			position: absolute;
+			left: 50%;
+			margin-left: -12px;
+		}
+		.open-nav{
+			width: 24px;
+			height: 50px;
+			right: 0;
+		    float: right;
+		    line-height: 0;
+		    font-size: 0;
+		    cursor: pointer;
+		    padding: 0 10px;
+		    box-sizing: content-box;
+		}
+		.Pseudo-elements, .nav-icon{
+			display: block;
+			margin-top: 30px;
+			height: 2px;
+			width: 24px;
+			border: 0;
+			box-sizing: border-box;
+			vertical-align: baseline;
+			background-color: #fff;
+			position: absolute;
+			transform: translateY(-50%);
+			cursor: pointer;
+		}
+		.nav-icon::after,.nav-icon::before, .Pseudo-elements::after, .Pseudo-elements::before{
+		    content: "";
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    width: 100%;
+		    height: 100%;
+		    background-color: inherit;
+		    -webkit-backface-visibility: hidden;
+		    backface-visibility: hidden;
+		    transition: all .25s ease;
+		    -moz-transition: all .25s ease;
+		    -webkit-transition: all .25s ease;
+		    -o-transition: all .25s ease;
+		}
+		.nav-icon::after{
+			transform: translateY(-6px);
+		}
+		.Pseudo-elements::after{
+			transform: translateY(0px) rotateZ(90deg);
+		}
+		.nav-icon::before{
+			transform: translateY(6px);
+		}
+		.open-nav:hover .nav-icon::after{
+			transform: translateY(-8px);
+		}
+		.open-nav:hover .nav-icon::before{
+			transform: translateY(8px);
+		}
+		#content{
+			transition: 1s;
+			padding-top: 50px;
+		}
+		.content1{
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+		}
+		.fade{
+			height: 0%;
+		}
+		.title-nav{
+			width: 50%;
+			margin: 0 auto;
+			padding-top: 100px;
+			transition: 2s;
+		}
+		.title-list{
+			width: 100%;
+			margin: 0 auto;
+			text-align: center;
+			list-style: none;
+			font-size: 24px;
+		}
+		.title-list li {
+			width: 50%;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			/*background-color: #dedefe;*/
+		}
+		.myblog{
+			width: 50%;
+			background-color: rgba(237, 237, 237, .5);
+		}
+	</style>
+</head>
+<body>
+	<section class="wrap">
+		<header>
+			<div class="controls">
+				<a class="open-nav" onclick="show()">
+					<span class="nav-icon"></span>
+				</a>
+			</div>
+		</header>
+		<div id="content">
+			<!-- <section class="myblog">myblog</section> -->
+			<nav class="title-nav" style="display: none;">
+				<ul class="title-list">
+					<li><a href="2017-8-28.html" target="_blank">2017-8-28</a></li>
+					<li><a href="2017-8-29.html" target="_blank">2017-8-29</a></li>
+					<li><a href="2017-8-30.html" target="_blank">2017-8-30</a></li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+	<script type="text/javascript">
+		titleNav = document.getElementsByClassName('title-nav')[0];
+		navIcon = document.getElementsByClassName('nav-icon')[0] || document.getElementsByClassName('Pseudo-elements')[0];
+		content = document.getElementById('content');
+		function show() {	
+			if (navIcon.className == "nav-icon") {
+				navIcon.className = "Pseudo-elements";
+				content.className = "content1";
+				setTimeout(function () {
+					navIcon.style.transform = "rotateZ(45deg)";
+					setTimeout(function function_name(argument) {
+						titleNav.style.display = "block";
+					},500);
+				},150);
+			} else if (navIcon.className == "Pseudo-elements") {
+				navIcon.className = "nav-icon";
+				content.className = "fade";
+				setTimeout(function () {
+					navIcon.style.transform = "rotateZ(0deg)";
+					titleNav.style.display = "none";
+				},150);
+			}
+		}
+	</script>
+</body>
+</html>
