@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉列表</title>
+</head>
+<body>
+	<div id="app">
+		<select name="" id="" v-model="selected">
+			<option value="">请选择</option>
+			<option value="html">html</option>
+			<option value="js">JavaScript</option>
+			<!-- 如果含有value属性，v-model就会优先匹配value的值；如果没有，就会直接匹配该备选项的文本 -->
+			<option>css</option>
+		</select>
+		<p>选择的项是： {{selected}}</p>
+		<hr>
+		<input type="radio" v-model="picked" :value="value">
+		<label for="">单选按钮</label>
+		<p>{{picked}}</p>
+		<p>{{value}}</p>
+		<hr>
+		<!-- 选中的时候值为a  未选中的时候值为b -->
+		<input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2"><label for="">复选框</label>
+		<p>{{toggle}}</p>
+		<p>{{value1}}</p>
+		<p>{{value2}}</p>
+		<hr>
+		<select name="" id="" v-model="selected1">
+			<option :value="{number:123}">123</option>
+		</select>
+		{{selected1.number}}
+		<!-- 当选中的时候，app.selected1是一个对象 -->
+	</div>
+	<hr>
+	<div id="app1">
+		<select name="" id="" v-model="selected">
+			<option v-for="option in options" :value="option.value">
+				{{option.text}}
+			</option>
+		</select>
+		<p>选择的项是： {{selected}}</p>
+	</div>
+	<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.min.js"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"#app",
+			data: {
+				selected:'html',
+				picked:false,
+				value:123,
+				// 复选框
+				toggle:false,
+				value1:'a',
+				value2:'b',
+				// 下拉列表
+				selected1:''
+			},
+		})
+		var app1 = new Vue({
+			el:'#app1',
+			data:{
+				selected:'html',
+				options:[
+					{
+						text:'HTML',
+						value:'html'
+					},
+					{
+						text:'JavaScript',
+						value:'js'
+					},
+					{
+						text:'CSS',
+						value:'css'
+					}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

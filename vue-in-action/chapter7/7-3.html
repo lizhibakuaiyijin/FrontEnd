@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<p>总数：{{total}}</p>
+		<p>总数2：{{total1}}</p>
+		<my-component 
+			@increase="handleGetTotal"
+			@reduce="handleGetTotal"></my-component><span>v-on监听</span>
+			<hr>
+		<child v-model="total1"></child><span>v-model绑定总数2</span>
+	</div>
+	<hr>
+	<div id="app1">
+		<p>总数：{{total1}}</p>
+		<child @input="handleGetTotal"></child>
+	</div>	
+	<hr>
+	<div id="app3">
+		<p>总数：{{total}}</p>
+		<app-three v-model="total"></app-three>
+		<button @click="handleReduce">-1</button>
+	</div>
+	<!-- 组件的通信 -->
+	<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.min.js"></script>
+	<script type="text/javascript">
+		Vue.component("my-component",{
+			template:'\
+				<div>\
+					<button @click="handleIncrease">+1</button>\
+					<button @click="handleReduce">-1</button>\
+				</div>',
+			data () {
+				return {
+					counter:0
+				}
+			},
+			methods: {
+				handleIncrease () {
+					this.counter ++;
+					this.$emit("increase",this.counter)
+				},
+				handleReduce () {
+					this.counter --;
+					this.$emit("reduce",this.counter)
+				},
+			}
+		})
+		Vue.component('child',{
+			template:'<button @click=handleClick>+1</button>',
+			data () {
+				return {
+					counter :10
+				}
+			},
+			methods: {
+				handleClick () {
+					this.counter++;
+					this.$emit("input",this.counter)
+				}
+			}
+		})
+		Vue.component("app-three",{
+			props:["value"],
+			template:"<input :value='value' @input='updateValue'>",
+			methods:{
+				updateValue () {
+					this.$emit("input",event.target.value)
+				}
+			}
+		})
+		var app = new Vue({
+			el:"#app",
+			data:{
+				total:0,
+				total1:10
+			},
+			methods:{
+				handleGetTotal (total) {
+					this.total = total;
+				},
+			}
+		})
+		var app1 = new Vue({
+			el:"#app1",
+			data:{
+				total1:10
+			},
+			methods:{
+				handleGetTotal (total1) {
+					this.total1 = total1;
+				}
+			}
+		})
+		var app3 = new Vue({
+			el:"#app3",
+			data:{
+				total:0
+			},
+			methods:{
+				handleReduce () {
+					this.total--;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

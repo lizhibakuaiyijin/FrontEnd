@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域插槽</title>
+	 <link href="../../favicon.ico" rel="shortcut icon">
+</head>
+<body>
+	<!-- 作用域插槽是一种特殊的slot，使用一个可以复用的模板替换已渲染元素 -->
+	<div id="app1">
+		<child-component>
+			<template scope="props">
+				<p>来自父组件的内容</p>
+				<p>{{props.msg}}</p>
+			</template>	
+		</child-component>
+	</div>
+	<div id="app2">
+		<my-list :books="books">
+			<!-- 作用域插槽也可以是具名的Slot -->
+			<template slot="book" scope="props">
+				<li>{{props.bookName}}</li>
+			</template>
+		</my-list>
+	</div>
+	<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.min.js"></script>
+	<script type="text/javascript">
+		Vue.component("child-component",{
+			template:`
+				<div class="container">
+					<slot msg="来自子组件的内容"></slot>	
+				</div>
+			`
+		})
+		// 子组件my-list 接收一个来自父级的props数据books，并且将它在name为book的solt上使用v-for指令循环，同时暴露一个变量bookName
+		Vue.component("my-list",{
+			props:{
+				books:{
+					type:Array,
+					default: function () {
+						return [];
+					}
+				}, 
+			},
+			template:`
+				<ul>
+					<slot 
+						name="book"
+						v-for="book in books"
+						:book-name="book.name">
+							<!-- 这里也可以写默认slot内容 -->
+						</slot>
+				</ul>
+			`
+		})
+		var app1 = new Vue({
+			el:'#app1',
+		})
+		var app2 = new Vue({
+			el:"#app2",
+			data: {
+				books:[
+					{name:"《Vue.js实战》"},
+					{name:"《JavaScript语言精粹》"},
+					{name:"《JavaScript高级语言设计》"},
+				]
+			}
+		})
+		/*
+			如果你仔细揣摩上面的写法，你可能会产生这样的疑问：我直接在父组件上使用v-for不就好了嘛，为什么还要绕一步，在子组件里面循环呢？的确，如果只是针对上面的示例，这样写是多此一举的。此例的用意主要是介绍作用域插槽的用法，并没有加入使用场景，而作用域插槽的使用场景就是既可以复用子组件的slot，又可以使slot内容不一致。如果上例还在其他组件内使用，<li>的内容渲染权是由使用者掌握的，而数据却可以通过临时变量（比如props）从子组件内获取
+			*/
+	</script>
+</body>
+</html>

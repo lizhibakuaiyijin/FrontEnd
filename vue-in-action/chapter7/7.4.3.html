@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>slot用法</title>
+</head>
+<body>
+	<!-- 单个Slot用法 -->
+	<xmp>在子组件内使用特殊的<slot>元素就可以为这个子组件开启一个slot（插槽），
+在父组件模板里，插入在子组件标签内的所有内容都将替代子组件的<slot>标签及它的内容</xmp>
+	<div id="app1">
+		<child-component>
+			<p>分发的内容</p>
+			<p>更多分发的内容</p>
+		</child-component>
+	</div>
+	<!-- 具名Slot -->
+	<xmp>给<slot>元素指定一个name后可以分发更多个内容，具名Slot可以与单个Slot共存</xmp>	
+	<div id="app2">
+		<child-component2>
+			<h2 slot="header">标题</h2>
+			<p>正文内容</p>
+			<p>更多的正文内容</p>
+			<div slot="footer">底部信息</div>
+		</child-component2>
+	</div>
+	<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.min.js"></script>
+	<script type="text/javascript">
+		// 子组件<slot>内的备注内容，它的作用域是子组件本身
+		Vue.component("child-component",{
+			template:`
+				<div>
+					<slot>
+						<p>如果父组件没有插入内容，我将作为默认出现</p>
+					</slot>
+				</div>
+				`
+		})
+		// 子组件内声明了3个<slot>元素，
+		// 其中在<div class="main">内的<slot>没有使用name特性，它将作为默认slot出现，
+		// 父组件没有使用slot特性的元素与内容都将出现在这里
+
+		// 如果没有指定默认的匿名slot，父组件内多余的内容片段都将被抛弃
+		Vue.component("child-component2",{
+			template: `
+				<div class='container'>
+					<div class='header'>
+						<slot name='header'></slot>
+					</div>
+					<div class='main'>
+						<slot></slot>
+					</div>
+					<div class='footer'>
+						<slot name='footer'></slot>
+					</div>	
+				</div>
+				`
+		})
+		var app1 = new Vue({
+			el:"#app1",
+			data:{
+
+			},
+			methods:{
+
+			},
+		})
+		var app2 = new Vue({
+			el:"#app2",
+			data:{
+
+			},
+			methods:{
+
+			},
+		})
+	</script>
+</body>
+</html>

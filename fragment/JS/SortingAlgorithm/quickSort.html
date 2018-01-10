@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var num = 0;
+	var array = [1,4,5,6,8,9,10,3];
+	quickSort(array);
+	console.log(array)
+	function quickSort(array){
+		function sort(prev, numsize){
+			//  prev = 0
+			var nonius = prev;
+			var j = numsize -1; // 数组最后一个元素
+			var flag = array[prev]; // 哨兵？ key
+			if ((numsize - prev) > 1) { // （递归出口）直至只剩一个元素  不需要排序为止
+				while(nonius < j){
+					for(; nonius < j; j--){
+						if (array[j] < flag) {
+							array[nonius++] = array[j];　//a[i] = a[j]; i += 1;
+							break;
+						};
+					}
+					for( ; nonius < j; nonius++){
+						if (array[nonius] > flag){
+							array[j--] = array[nonius];
+							break;
+						}
+					}
+				}
+				array[nonius] = flag;
+				// 划分为两半
+				sort(0, nonius);
+				sort(nonius + 1, numsize);
+			}	
+		}
+		sort(0, array.length);
+		return array;
+	}
+	</script>
+</body>
+</html>

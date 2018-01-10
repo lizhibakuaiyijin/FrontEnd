@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id='app1'></div>
+	<div id='app2'>
+		{{reverseText}}
+	</div>
+	<script type="text/javascript" src=https://unpkg.com/vue/dist/vue.min.js></script>
+	<script type="text/javascript">
+		var app1 = new Vue({
+			el:'#app1',
+			data:{
+				text: '123,456'
+			}
+		})
+		var app2 = new Vue ({
+			el:"#app2",
+			computed:{
+				reverseText() {
+					return app1.text.split(',').reverse().join(',')
+				}
+			}
+		})
+	</script>
+</body>
+</html>

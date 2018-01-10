@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>计算属性用法</title>
+</head>
+<body>
+	<div id=app>
+		<ul>
+			<li>
+				{{prices}}
+			</li>
+			<li>
+				{{fullName}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src=https://unpkg.com/vue/dist/vue.min.js></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"#app",
+			data:{
+				package1:[
+					{
+						name:"iPhone 7",
+						price: 7199,
+						count:2
+					},
+					{
+						name:"iPad",
+						price:2888,
+						count:1
+					}
+				],
+				package2:[
+					{
+						name:'apple',
+						price:3,
+						count:5
+					},
+					{
+						name:"banana",
+						price:2,
+						count:10
+					}
+				],
+				firstNmae:'Jack',
+				lastName:'Green'
+			},
+			computed:{
+				fullName:{
+					//getter,用于读取
+					get () {
+						return this.firstNmae + " " + this.lastName;
+					},
+					// setter,写入时触发
+					set  (newValue) {
+						var names = newValue.split(" ");
+						this.firstNmae = names[0];
+						this.lastName = names[names.length - 1];
+					}
+				},
+				prices () {
+					var prices = 0;
+					for (var i = 0; i <this.package1.length; i++) {
+						prices += this.package1[i].price * this.package1[i].count;
+					}
+					for (var i = 0; i <this.package2.length; i++) {
+						prices += this.package2[i].price * this.package2[i].count;
+					}
+					return prices;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

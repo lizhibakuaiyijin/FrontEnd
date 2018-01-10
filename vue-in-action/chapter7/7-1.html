@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+</head>
+<body>
+	<Card style="width: 350px">
+		<p slot="title">与 xxx 聊天中</p>
+		<a href="#" slot="extra">
+			<Icon type="android-close" size="18"></Icon>
+		</a>
+		<div style="height: 100px">
+			
+		</div>
+		<div>
+			<Row :gutter="16">
+				<i-col span="17">
+					<i-input
+						v-model="value"
+						placehoder="请输入..."></i-input>
+				</i-col>
+				<i-col span="24">
+					<i-botton
+						type="button"
+						icon="paper-airplane">发送</i-botton>
+				</i-col>
+			</Row>
+		</div>
+	</Card>
+	<div id="app">
+		<input type="text" v-model="counter">
+		<my-component></my-component>
+		<Child message="来自父组件的数据" :dynamic="counter"></Child>
+		<!-- 字符串模板不受限制 -->
+		<!-- 特殊的属性来挂载组件 -->
+		<table>
+			<tbody is="my-component"></tbody>
+		</table>
+		<Test test1="[1,2,3]" :test2="[1,2,3]"></Test>
+	</div>
+	<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.min.js"></script>
+	<script type="text/javascript">
+		// 组件注册
+		// 1.全局注册
+		// 参数一： 注册的组件自定义标签名称，推荐使用小写加减号分隔的形式命名
+		Vue.component("my-component",{
+			// 选项
+			template:"<div style='border:1px solid;'>这是组件的内容<hr/>{{message}}<hr><button @click='counter++'>{{counter}}</button></div>",
+			data () {
+				return{
+					message:"return出去的内容",
+					counter:0
+				}
+			}
+		})
+		// 2.局部注册
+		var Child = {
+			props:["message","dynamic"], // 来自父级
+			template:"<div style='border:1px solid red'>局部注册<hr><span>{{message}}</span><hr><span>来自父组件的动态数据：{{dynamic}}</span></div>"
+		}
+		var Test = {
+			props:["test1","test2"],
+			template:"<div>传递数据：[1,2,3]<hr>直接传值的长度：{{test1.length}}(传递的仅仅是字符串)<br/>动态传值的长度：{{test2.length}}</div>"
+		}
+		// Vue注册
+		var app = new Vue({
+			el:"#app",
+			data:{
+				counter:"改变我试试看"
+			},
+			components:{
+				"Child":Child,
+				"Test":Test
+			}
+		})
+	</script>
+</body>
+</html>

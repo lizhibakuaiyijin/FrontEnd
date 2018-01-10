@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>数组更新</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<template v-for="book in books">
+				<li>
+					书名：{{book.name}}
+				</li>
+				<li>
+					作者：{{book.author}}
+				</li>
+			</template>
+		</ul>
+	</div>
+	<script type="text/javascript" src=https://unpkg.com/vue/dist/vue.min.js></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"#app",
+			data:{
+				books:[
+					{
+						name:"《Vue.js实战》",
+						author:"梁灝"
+					},
+					{
+						name:"《JavaScript权威指南》",
+						author:"Douglas Crockford"
+					},
+					{
+						name:"《JavaScript高级程序设计》",
+						author:"Nicholas C.Zakas"
+					}
+				]
+			}
+		})
+		app.books.push({
+			name:"《CSS揭秘》",
+			author:"[希] Lea Verou"
+		})
+		// 过滤 app.books.filter() 不会改变原数组，返回的是一个新数组 
+		// 所以用新数组来替换原数组
+		app.books = app.books.filter(function (item) {
+			return item.name.match(/JavaScript/);
+		})
+	</script>
+</body>
+</html>

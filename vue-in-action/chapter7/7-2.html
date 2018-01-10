@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 数据验证 -->
+	<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.min.js"></script>
+	<script type="text/javascript">
+		Vue.component('my-componet',{
+			props:{
+				// type 可以是 String Number Boolean Object Array Function
+				// 也可以是一个自定义构造器，使用instanceof检测
+				// 必须是数字类型
+				propA:Number,
+				// 必须是字符串或数字类型
+				propB:[String,Number],
+				// 布尔值，如果没有定义，默认值就是true
+				propC:{
+					type:Boolean,
+					default:true
+				},
+				// 数字，而且是必传
+				propD:{
+					type:Number,
+					required: true
+				},
+				// 如果是数组或对象，默认值必须是一个函数来返回
+				propE:{
+					type:Array,
+					default:function () {
+						return [];
+					}
+				},
+				// 自定义一个验证函数
+				propF:{
+					validator:function (value) {
+						return value > 10;
+					}
+				}
+			}
+
+		})
+	</script>
+</body>
+</html>

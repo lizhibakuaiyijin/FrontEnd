@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标签页组件</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div v-cloak id="app">
+		
+	</div>
+	<!-- 每个标签页的主体内容肯定是由使用组件的父级控制的，所以这部分是一个slot，而且slot的数量决定了标签页切换按钮的数量。假设我们有3个标签页，点击每个标签按钮时，另外的两个标签对应的slot应该被隐藏掉。一般这时候，比较容易想到的解决办法是，在slot里写3个div，在接收到切换通知时，显示和隐藏对应的div。这样的设计没问题，只不过体现不出组件的价值来，因为我们还是写了一些与业务逻辑无关的交互逻辑，而这部分逻辑最好组件本身帮忙处理了，我们只用聚焦在slot内容本身，这才是我们与业务最相关的。这种情况下，我们再定义一个子组件pane，嵌套在标签页组件tabs里，我们的业务代码都放在pane的slot内，而3个pane组件作为整体成为tabs的slot-->
+	<!-- 由于tabs和pane两个组件是分离的，但是tabs组件上的标题应该由pane组件来定义，因为slot是写在pane里，因此在组件初始化（及标签标题动态改变）时，tabs要从pane里获取标题并保存起来，自己使用 -->
+	<script type="text/javascript" src="https://unpkg.com/vue/dist/vue.min.js"></script>
+	<script type="text/javascript" src="pane.js"></script>
+	<script type="text/javascript" src="tabs.js"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:"app"
+		})
+	</script>
+</body>
+</html>
