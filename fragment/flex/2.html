@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			height: 100%;
+		}
+		.flex-box{
+			background-color: #fefede;
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.flex-box div{
+			height: 200px;
+			border: 10px solid #fffaaa;
+			box-sizing: border-box;
+			font-size: 30px;
+			text-align: center;
+			line-height: 200px;
+		}
+		div.item1{
+			width: 100%;
+		}
+		div.item2{
+			width: 50%;
+		}
+		div.item4{
+			width: 25%;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="flex-box">
+		<div class="item1">1</div>
+		<div class="item2">2</div>
+		<div class="item2">3</div>
+		<div class="item4">4</div>
+		<div class="item4">5</div>
+		<div class="item4">6</div>
+		<div class="item4">7</div>
+	</div>
+</body>
+</html>
