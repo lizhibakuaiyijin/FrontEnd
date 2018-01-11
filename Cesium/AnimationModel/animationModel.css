@@ -1,0 +1,73 @@
+/*隐藏input number  上下箭头*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+input[type="number"]{-moz-appearance:textfield;}
+/*animation*/
+.pangu-animationContainer{
+    position: absolute;
+    left: 29px;
+    bottom: 7px;
+    width:200px;
+    height: 62px;
+}
+.animation-time{
+    position: absolute;
+    width: 245px;
+    color: #20cefe;
+    font-size: 16px ;
+    display: flex;
+    justify-content: space-between;
+}
+.animation-time-date,.animation-time-time{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.animation-time-separate{ margin: 0 1px; margin-top: -3px; }
+.animation-time-placeholder{
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #20cefe;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #131f59;
+}
+.animation-time-placeholder-4{ width: 40px; }
+.animation-time-placeholder-2{ width: 22px; }
+.animation-time-placeholder[readonly]{ background-color: transparent; }
+
+/*-----------------------------------------------*/
+/*播放条 复位 选择*/
+.animation-player, .animation-reset, .animation-pickdata{
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+}
+.animation-player{
+    left: 0;
+    width: 120px;
+    height:20px;
+}
+.animation-reset{ left: 149px; width: 20px;height: 20px; }
+.animation-pickdata{ right: -31px; width: 20px;height: 20px; }
+.animation-player svg{ width: 120px; height:20px;}
+/* 播放条背景颜色 */
+.animation-player-bg, .animation-player-bg .animation-player-rectBtn{ fill:#131f59; }
+.animation-player-rectBtn{ cursor: pointer; }
+/* 播放条按钮颜色 */
+.animation-player-btn{ fill:#fff; }
+/* 播放条按钮hover颜色 */
+.animation-player-rectBtn:hover .animation-player-btn{ fill: #20cefc !important; }
+/* 复位按钮 选择日期按钮颜色 */
+.animation-reset path,.animation-pickdata path { fill:#0071bc; }
+/* 复位按钮 选择日期按钮hover颜色*/
+.animation-reset:hover path,.animation-pickdata:hover path{ fill:#20cefc }
+/* 复位 选择 按钮大小 */
+.animation-reset svg, .animation-pickdata svg{ width: 20px;height: 20px;}

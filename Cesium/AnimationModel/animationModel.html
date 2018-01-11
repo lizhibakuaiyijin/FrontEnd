@@ -1,0 +1,124 @@
+<!-- 1.11 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画小部件</title>
+	<link rel="stylesheet" href="animationModel.css"></link>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0
+		}
+		body{
+			background-color: #E3F2FD
+		}
+	</style>
+</head>
+<body>
+	<div class="pangu-animationContainer">
+		<!-- 时间 -->
+		<div class="animation-time">			
+			<div class="animation-time-date">
+				<input
+					class="animation-time-placeholder animation-time-placeholder-4"
+					type="number"
+					value="2017"
+					maxlength="4"
+					readonly/>
+				<div class="animation-time-separate"> - </div>
+				<input
+					class="animation-time-placeholder animation-time-placeholder-2"
+					type="number"
+					value="12"
+					maxlength="2"
+					readonly/>
+				<div class="animation-time-separate"> - </div>
+				<input 
+					class="animation-time-placeholder animation-time-placeholder-2" 
+					type="number" 
+					value="27" 
+					maxlength="2" 
+					readonly>
+			</div>
+			<div class="animation-time-time">
+				<input 
+					class="animation-time-placeholder animation-time-placeholder-2" 
+					type="number" 
+					value="08" 
+					maxlength="2" 
+					readonly>
+				<span class="animation-time-separate">:</span>
+				<input 
+					class="animation-time-placeholder animation-time-placeholder-2" 
+					value="20" 
+					type="number" 
+					maxlength="2" 
+					readonly>
+				<span class="animation-time-separate">:</span>
+				<input
+					class="animation-time-placeholder animation-time-placeholder-2"
+				    value="20"
+					type="number"
+					maxlength="2"
+					pattern=""
+					readonly/>
+			</div>
+		</div>
+
+		<div>
+			<div class="animation-player">
+				<svg xmlns="http://www.w3.org/2000/svg" >
+					<defs><style></style></defs>
+					<g>
+						<g>
+							<!--容器-->
+							<rect class="animation-player-bg" width="120" height="20" rx="10" ry="10"/>
+							<!--后退-->
+							<g class="animation-player-rectBtn" data="goback">
+								<rect class="animation-player-bg" x="11.27" width="20" height="20" data="goback"/>
+								<path class="animation-player-btn" d="M27.14,4.1,22.71,7.2V4.92a1,1,0,0,0-1.57-.82L13.88,9.18a1,1,0,0,0,0,1.64l7.26,5.08a1,1,0,0,0,1.57-.82V12.8l4.43,3.1a1,1,0,0,0,1.57-.82V4.92A1,1,0,0,0,27.14,4.1Z" data="goback"/>
+							</g>
+							<!--点击暂停或开始-->
+							<g class="animation-player-rectBtn animation-player-pause" data="pause">
+								<rect class="animation-player-bg" x="50.19" width="20" height="20" data="pause"/>
+								<rect class="animation-player-btn" x="55.5" y="4" width="3" height="12" rx="1.5" ry="1.5" data="pause"/>
+								<rect class="animation-player-btn" x="61.5" y="4" width="3" height="12" rx="1.5" ry="1.5" data="pause"/>
+							</g>
+							<g class="animation-player-rectBtn animation-player-player" data="player" style="display: none">
+								<rect class="animation-player-bg" x="50.19" width="20" height="20" data="player" />
+								<path class="animation-player-btn" d="M63.2,16H56.8A2.8,2.8,0,0,1,54,13.2V6.8A2.8,2.8,0,0,1,56.8,4h6.4A2.8,2.8,0,0,1,66,6.8v6.4A2.8,2.8,0,0,1,63.2,16ZM56.8,6.4a.41.41,0,0,0-.4.4v6.4a.41.41,0,0,0,.4.4h6.4a.41.41,0,0,0,.4-.4V6.8a.41.41,0,0,0-.4-.4Z" data="player" />
+								<rect class="animation-player-btn" x="58.5" y="8.5" width="3" height="3" data="player" />
+							</g>
+							<!--快进-->
+							<g class="animation-player-rectBtn" data="speed">
+								<rect class="animation-player-bg" x="89.1" width="20" height="20" data="speed"/>
+								<path class="animation-player-btn" d="M106.12,9.18,98.86,4.1a1,1,0,0,0-1.57.82V7.2L92.86,4.1a1,1,0,0,0-1.57.82V15.08a1,1,0,0,0,1.57.82l4.43-3.1v2.28a1,1,0,0,0,1.57.82l7.26-5.08A1,1,0,0,0,106.12,9.18Z" data="speed"/>
+							</g>
+						</g>
+					</g>
+				</svg>
+			</div>
+			<div class="animation-reset animation-player-rectBtn">
+				<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1515553196800" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4053" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"></style></defs>
+				<path d="M511.811 31.798c-265.87 0-481.415 215.536-481.415 481.411 0 265.891 215.545 481.42 481.415 481.42 265.891 0 481.42-215.53 481.42-481.42 0-265.875-215.536-481.411-481.42-481.411v0zM511.811 916.863c-222.935 0-403.649-180.711-403.649-403.655 0-222.935 180.716-403.649 403.649-403.649 222.939 0 403.655 180.716 403.655 403.649-0.001 222.945-180.717 403.655-403.655 403.655v0zM511.811 916.863z" p-id="4054"></path>
+				<path d="M511.811 130.539c-211.342 0-382.669 171.318-382.669 382.67 0 211.355 171.328 382.679 382.669 382.679 211.355 0 382.679-171.323 382.679-382.679 0-211.351-171.323-382.67-382.679-382.67v0zM775.168 332.595l20.173 34.191-63.741 37.6-20.169-34.196 63.734-37.596zM653.174 219.129l35.411 17.996-33.538 65.963-35.385-17.985 33.515-65.972zM202.221 497.531h73.988v39.707h-73.988v-39.707zM233.917 698.601l-14.97-36.763 68.529-27.898 14.985 36.767-68.543 27.892zM287.897 409.805l-63.734-37.597 20.176-34.201 63.734 37.6-20.176 34.196zM368.097 219.122l33.531 65.978-35.401 17.989-33.535-65.972 35.404-17.996zM376.208 817.441l-35.401-17.996 33.519-65.957 35.401 17.989-33.519 65.963zM530.244 836.818h-40.162v-66.169h40.162v66.169zM647.726 817.421l-33.531-65.957 35.395-17.996 33.535 65.952-35.401 18zM490.080 542.651l12.627-332.066 41.518 302.629 232.812 161.182-286.958-131.745zM749.060 537.237v-39.707h73.988v39.707h-73.988zM749.060 537.237z" p-id="4055"></path></svg>
+			</div>
+			<div class="animation-pickdata animation-player-rectBtn" data="pick">
+				<svg class="animation-pickdata-choose" xmlns="http://www.w3.org/2000/svg" >
+					<defs></defs>
+					<g>
+						<g>
+							<path d="M10,20A10,10,0,1,1,20,10,10,10,0,0,1,10,20ZM8.2,4A.87.87,0,0,0,6.46,4v.9a.87.87,0,0,0,1.74,0Zm5.31,0a.87.87,0,0,0-1.74,0v.9a.87.87,0,0,0,1.74,0Zm2.24,1.32a.88.88,0,0,0-.88-.87H14v.44a1.33,1.33,0,0,1-2.65,0V4.47H8.67v.44A1.33,1.33,0,0,1,6,4.91V4.47H5.13a.88.88,0,0,0-.88.87v9.59a.88.88,0,0,0,.88.87h9.73a.88.88,0,0,0,.88-.87Zm-10,2.44h8.46v6.44H5.77Zm6.54,5.68h1.15V12.32H12.3Zm0-1.89h1.15V10.43H12.3Zm0-1.89h1.15V8.54H12.3Zm-1.92,3.79h1.15V12.32H10.38Zm0-1.89h1.15V10.43H10.38Zm0-1.89h1.15V8.54H10.38ZM8.46,13.46H9.61V12.32H8.46Zm0-1.89H9.61V10.43H8.46Zm0-1.89H9.61V8.54H8.46ZM6.54,13.46H7.69V12.32H6.54Zm0-1.89H7.69V10.43H6.54Zm0-1.89H7.69V8.54H6.54Zm0,0"/>
+						</g>
+					</g>
+				</svg>
+				<svg class="animation-pickdata-sure" style="display: none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+					<defs><style>.cls-1-1{fill:none;}.cls-2-2{clip-path:url(#clip-path);}.cls-3-3{fill:#20cefc;}</style><clipPath id="clip-path" transform="translate(0 -0.01)"><rect class="cls-1-1" width="20" height="19.99"/></clipPath></defs><g><g><g class="cls-2-2"><path class="cls-3-3" d="M10,0A10,10,0,1,0,20,10,10,10,0,0,0,10,0Zm5.62,7.23L9,13.86a1,1,0,0,1-.5.25.65.65,0,0,1-.5-.25L4.37,10.36a.93.93,0,0,1,0-1.12.93.93,0,0,1,1.12,0l2.87,2.87,6-6a.93.93,0,0,1,1.12,0,.81.81,0,0,1,.12,1.12Zm0,0" transform="translate(0 -0.01)"/></g></g></g>
+				</svg>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="animationModel.js"></script>
+</body>
+</html>
