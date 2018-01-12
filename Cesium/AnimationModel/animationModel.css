@@ -1,10 +1,26 @@
-/*隐藏input number  上下箭头*/
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button{
-    -webkit-appearance: none !important;
-    margin: 0;
+/*timeline*/
+/*最小刻度*/
+.cesium-timeline-ticTiny {
+    color: #20cefe;
 }
-input[type="number"]{-moz-appearance:textfield;}
+/*长一点的刻度*/
+.cesium-timeline-ticSub{
+
+}
+/*长的刻度*/
+.cesium-timeline-ticMain {
+
+}
+.cesium-timeline-ticTiny , .cesium-timeline-ticSub , .cesium-timeline-ticMain {
+    background-color: #20cefe;
+}
+
+
+
+
+
+
+
 /*animation*/
 .pangu-animationContainer{
     position: absolute;
@@ -71,3 +87,35 @@ input[type="number"]{-moz-appearance:textfield;}
 .animation-reset:hover path,.animation-pickdata:hover path{ fill:#20cefc }
 /* 复位 选择 按钮大小 */
 .animation-reset svg, .animation-pickdata svg{ width: 20px;height: 20px;}
+.animation-notice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 111;
+    top: -20px;
+    width: 250px;
+    height: 100%;
+    padding: 20px 0;
+    background-color: #aaaaaa39;
+    border-radius: 10px;
+    color: #fff;
+
+    animation: fadeAway  1.5s 1 linear; 
+}
+@keyframes fadeAway{from{opacity:1}
+50%{opacity:.75}
+to{opacity:0}
+}
+@-moz-keyframes fadeAway{from{opacity:1}
+50%{opacity:.75}
+to{opacity:0}
+}
+@-webkit-keyframes fadeAway{from{opacity:1}
+50%{opacity:.75}
+to{opacity:0}
+}
+@-o-keyframes myfirst fadeAway{from{opacity:1}
+50%{opacity:.75}
+to{opacity:0}
+}

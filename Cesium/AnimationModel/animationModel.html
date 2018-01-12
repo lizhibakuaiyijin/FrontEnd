@@ -22,46 +22,55 @@
 			<div class="animation-time-date">
 				<input
 					class="animation-time-placeholder animation-time-placeholder-4"
+					data="year"
 					type="number"
 					value="2017"
-					maxlength="4"
 					readonly/>
 				<div class="animation-time-separate"> - </div>
 				<input
 					class="animation-time-placeholder animation-time-placeholder-2"
+					data="month"
 					type="number"
 					value="12"
-					maxlength="2"
+					min="1"
+					max="12"
 					readonly/>
 				<div class="animation-time-separate"> - </div>
 				<input 
 					class="animation-time-placeholder animation-time-placeholder-2" 
+					data="day"
 					type="number" 
 					value="27" 
-					maxlength="2" 
+					min="1"
+					max="31" 
 					readonly>
 			</div>
 			<div class="animation-time-time">
 				<input 
 					class="animation-time-placeholder animation-time-placeholder-2" 
+					data="hour"
 					type="number" 
 					value="08" 
-					maxlength="2" 
+					min="0"
+					max="23" 
 					readonly>
 				<span class="animation-time-separate">:</span>
 				<input 
 					class="animation-time-placeholder animation-time-placeholder-2" 
+					data="minute"
 					value="20" 
 					type="number" 
-					maxlength="2" 
+					min="0"
+					max="59" 
 					readonly>
 				<span class="animation-time-separate">:</span>
 				<input
 					class="animation-time-placeholder animation-time-placeholder-2"
+					data="second"
 				    value="20"
 					type="number"
-					maxlength="2"
-					pattern=""
+					min="0"
+					max="59"
 					readonly/>
 			</div>
 		</div>
@@ -114,7 +123,7 @@
 					</g>
 				</svg>
 				<svg class="animation-pickdata-sure" style="display: none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
-					<defs><style>.cls-1-1{fill:none;}.cls-2-2{clip-path:url(#clip-path);}.cls-3-3{fill:#20cefc;}</style><clipPath id="clip-path" transform="translate(0 -0.01)"><rect class="cls-1-1" width="20" height="19.99"/></clipPath></defs><g><g><g class="cls-2-2"><path class="cls-3-3" d="M10,0A10,10,0,1,0,20,10,10,10,0,0,0,10,0Zm5.62,7.23L9,13.86a1,1,0,0,1-.5.25.65.65,0,0,1-.5-.25L4.37,10.36a.93.93,0,0,1,0-1.12.93.93,0,0,1,1.12,0l2.87,2.87,6-6a.93.93,0,0,1,1.12,0,.81.81,0,0,1,.12,1.12Zm0,0" transform="translate(0 -0.01)"/></g></g></g>
+					<defs><style>.cls-1-1{fill:none;}.cls-2-2{clip-path:url(#clip-path);}</style><clipPath id="clip-path" transform="translate(0 -0.01)"><rect class="cls-1-1" width="20" height="19.99"/></clipPath></defs><g><g><g class="cls-2-2"><path d="M10,0A10,10,0,1,0,20,10,10,10,0,0,0,10,0Zm5.62,7.23L9,13.86a1,1,0,0,1-.5.25.65.65,0,0,1-.5-.25L4.37,10.36a.93.93,0,0,1,0-1.12.93.93,0,0,1,1.12,0l2.87,2.87,6-6a.93.93,0,0,1,1.12,0,.81.81,0,0,1,.12,1.12Zm0,0" transform="translate(0 -0.01)"/></g></g></g>
 				</svg>
 			</div>
 		</div>
