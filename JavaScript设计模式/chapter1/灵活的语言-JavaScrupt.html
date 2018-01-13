@@ -1,0 +1,128 @@
+<!--1.13-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+
+</body>
+<script>
+	//从表单验证引发的思考
+	// 这些都是全局变量
+	function checkName() {
+		
+    }
+    function checkEmail() {
+		
+    }
+    function checkPassword() {
+		
+    }
+    //  以下形式的函数   和上面的三个的区别：用的时候要提前声明
+    var checkName = function () {
+		
+    }
+    var checkEmail = function () {
+		
+    }
+    var checkPassword = function () {
+		
+    }
+
+    // 以上形式的函数 都是全局变量 当代码量过大 参与人员过多的时候
+	// 很容易被覆盖  解决办法 ↓
+
+
+    // 用变量收编对象
+	var CheckObject = {
+	    checkName: function () {
+			
+        },
+		checkEmail: function () {
+			
+        },
+		checkPassword: function () {
+			
+        }
+	}
+	// 另一种形式
+	var CheckObject = function () { }
+	CheckObject.checkName = function () {
+		
+    }
+    CheckObject.checkEmail = function () {
+		
+    }
+    CheckObject.checkPassword = function () {
+		
+    }
+    // 自己用的时候很方便  如果别人要用的话  得改进
+	// 每个人在使用的时候互不影响
+	var CheckObject = function () {
+		return{
+            checkName: function () {
+
+            },
+            checkEmail: function () {
+
+            },
+            checkPassword: function () {
+
+            }
+		}
+    }
+    // 使用方法
+	var a = CheckObject();
+	a.checkEmail();
+
+
+	// 类的思想
+	var CheckObject = function () {
+		this.checkName = function () {
+			
+        }
+        this.checkEmail = function () {
+			
+        }
+        this.checkPassword = function () {
+			
+        }
+    }
+    // 使用法法
+	var a = new CheckObject();
+	a.checkEmail();
+	
+	// 上述写法改进
+	var CheckObject = function () {
+		
+    }
+    CheckObject.prototype.checkName = function () {
+		
+    }
+    CheckObject.prototype.checkEmail = function () {
+		
+    }
+    CheckObject.prototype.checkPassword = function () {
+		
+    }
+    // 另一种表现形式  (不能混用  会覆盖)
+    var CheckObject = function () {
+
+    }
+    CheckObject.prototype = {
+	    checkName : function () {
+			
+        },
+		checkEmail : function () {
+			
+        },
+		checkPassword : function () {
+			
+        }
+	}
+	
+
+</script>
+</html>

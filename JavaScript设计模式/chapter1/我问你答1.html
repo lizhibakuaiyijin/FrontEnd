@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+    var CheckObject = function () {
+        return{
+            checkName: function () {
+				console.log("验证姓名")
+				return this;
+            },
+            checkEmail: function () {
+                console.log("验证邮箱")
+				return this;
+            },
+            checkPassword: function () {
+                console.log("验证密码")
+				return this;
+            }
+        }
+    }
+    // 实现上述方法的链式调用
+	var a = CheckObject();
+    a.checkName().checkEmail().checkPassword();
+</script>
+</body>
+</html>
