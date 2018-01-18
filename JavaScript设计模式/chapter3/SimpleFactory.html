@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1.18</title>
+</head>
+<body>
+	<div>
+		<button onclick="userNameAlert.show()">用户名提示</button>
+		<button onclick="passwordAlert.show()">密码提示</button>
+		<button onclick="repasswordAlert.show()">两次密码</button>
+		<button onclick="enterAlert.show()">欢迎登录</button>
+	</div>
+	<script type="text/javascript">
+		// 简单工厂模式： 静态工厂方法
+		// 由提示框引发的思考
+		/* 
+		var LoginAlert = function (text) {
+			this.content = text
+		}
+		LoginAlert.prototype.show = function() {
+			alert(this.content)
+		};
+
+		var userNameAlert = new LoginAlert("用户名不能多于16个字母或数字")
+		var passwordAlert = new LoginAlert("输入密码不正确")
+		*/
+
+		function createPop(type, text) {
+			// 创建一个对象，并对对象拓展属性和方法
+			var o = new Object();
+			o.content = text;
+			o.show = function () {
+				alert(this.content)
+				this.different()
+			}
+			switch (type) {  // 处理差异
+				case "alert" :
+					o.different = function () {
+						console.log("alert");
+					}
+					break;
+				case "confirm" :
+					o.different = function () {
+						console.log("confirm");
+					}
+					break;
+				case "prompt" :
+					o.different = function () {
+						console.log("prompt");
+					}
+					break;
+			}
+			return o;
+		}
+
+		var userNameAlert = createPop("alert","用户名不能多于16个字母或数字")
+		var passwordAlert = createPop("alert","输入密码不正确")
+		var repasswordAlert = createPop("confirm","两次输入不一致")
+		var enterAlert = createPop("prompt","欢迎登录")
+	</script>
+</body>
+</html>
