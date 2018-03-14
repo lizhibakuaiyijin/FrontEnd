@@ -1,0 +1,2 @@
+打包之后路径错误的话，解决方法：
+webpack.prod.conf.js 中output添加参数publicPath:'./'

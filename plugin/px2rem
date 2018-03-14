@@ -1,0 +1,23 @@
+地址： https://www.npmjs.com/package/px2rem 
+
+安装： npm install px2rem-loader
+
+build  utils.js
+找到 generateLoaders() 方法 修改
+var px2remLoader = { 
+    loader: 'px2rem-loader’, 
+    options: {
+         remUnit: 75//设计稿宽度/10 
+    }
+}; 
+// generate loader string to be used with extract text plugin 
+function generateLoaders(loader, loaderOptions) { 
+    var loaders = [cssLoader, px2remLoader];//添加px2rem 插件 
+    if (loader) {
+        loaders.push({
+            loader: loader + '-loader’, 
+            options: Object.assign({},
+            loaderOptions, { sourceMap: options.sourceMap })
+        })
+    }
+}
